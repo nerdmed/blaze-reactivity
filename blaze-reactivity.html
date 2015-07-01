@@ -1,0 +1,23 @@
+<head>
+  <title>blaze-reactivity</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <p>Take a look into your console, to see the empty helper running.</p>
+  {{> tmpl1}}
+</template>
+
+
+<template name="tmpl1">
+	Tempalte 1: {{> tmpl2 foo=emptyHelper bar=changingReactiveVar }}
+</template>
+
+<template name="tmpl2">
+	Changing Value: {{bar}}
+</template>
