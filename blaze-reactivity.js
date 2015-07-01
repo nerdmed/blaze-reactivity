@@ -13,12 +13,29 @@ if (Meteor.isClient) {
   })
 
   Template.tmpl1.helpers({
+    dataContextChanged: function(){
+      Template.currentData();
+      console.log('I will run if the Data Context for tmpl1 Changes');
+    },
+    // in reality this contains some more complex JS
     emptyHelper: function(){
-      console.log('Hey Why am i running? Data context is not changing and i have no deps')
+      // From the docs: Under the hood, each helper starts a new Tracker.autorun.
+
+      // 1. When its reactive dependencies change -> No Dependencys.
+      // 2. Helpers depend on their data context ? Local Data Contenxt should not be the
+      //    reason. the the helper above -> No
+      // 3. passed arguments ? No.
+      // 4. Reactive data sources accessed during execution ? No.
+      console.log('Hey Why am i running?')
     },
     changingReactiveVar: function () {
       return Template.instance().changingReactiveVar.get();
+    },
+    log: function(arg1, arg2){
+      // this will also happen if you execute  any helper and pass 2 paramter
+      // at the same time- see commented html
     }
+
   });
 
 }

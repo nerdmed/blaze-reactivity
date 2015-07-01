@@ -15,7 +15,11 @@
 
 
 <template name="tmpl1">
+
 	Tempalte 1: {{> tmpl2 foo=emptyHelper bar=changingReactiveVar }}
+
+	{{!-- Works also with a helper accessing both helpers --}}
+	{{!-- {{> log emptyHelper changingReactiveVar }} --}}
 </template>
 
 <template name="tmpl2">
